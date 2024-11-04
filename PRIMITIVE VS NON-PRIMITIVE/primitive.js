@@ -1,10 +1,236 @@
-/*     DECLARATIONS  /VS/   RE-ASSIGN  /VS/  UPDATION     */ 
+//     Variables :   DECLARATIONS  /VS/   RE-ASSIGN  /VS/  UPDATION     
+
+/*
+  Q: what is RE- DECLARATION ?
+re-declaration means decalring the varaibae with same name within the same scope
+is called re-declaration and it is possible by only "var"*/
+   
+var reDeclare = "re-declare variables";
+var reDeclare = "re-declare variables again";
+
+/*  Q: What is RE- ASSIGNMENT ?
+This refers to chainging the value of variable  after it has been declared
+"let" and "const" allows re-assignment/updation.
+*/
+var re_assinging = "re-assignment";
+    re_assinging = "again";
+
+let reassingNow = "let reassign";
+    reassingNow = true;
+
+/* Q: What is UPDATION  ?
+Refers to UPDATION === MODIFIED of values/content in objects and arrays.Here we
+can use "CONSTANT" too*/
+
+const updateValue = {name:"javascript", price:8000};
+      updateValue.name = ["nodejs","sql"];
+      console.log(updateValue);
+
+let arrayUpdated  = [12,true,"reactjs"];
+      arrayUpdated.push({courses:'phyton'});
+console.log(arrayUpdated);
 
 
 let reAssign = "suman"
     reAssign = "thapa";
     reAssign = ('suman') + ("thapa")
   console.log(reAssign);
+
+
+  /* NOTE: "CONST" KEYWORD VALUE INITILAZION/ASSIGN AFTER THE VARIABLE DECLARATION
+   IS COMPULSORY BUT IN CASE OF "LET" AND "VAR" VALUE INTILIZATION AFTER VARIABLE 
+   DECLARATION IS OPTIONAL */
+
+   let intilization;
+   console.log(intilization);    // output: undefined
+
+   var intiliaeVar;
+   console.log(intiliaeVar);     //undefined
+ 
+   const intilization_const;
+   console.log(intilization_const)    // error: variable must intialized after declare
+ 
+
+// declaration 
+
+let declare ;   // this line is variable(identifer/label) declaration
+  declare = 12; // this line is intializing or assinging value
+
+// Reassigning 
+let reassign = 12;
+    reassign = "string";
+    reassign = undefined;
+    reassign = null ;
+    reassign = true;
+    reassign = [1,22,34,5];
+    reassign = {name:'suman',age:30};
+    reassign = function(){console.log('hello world')};
+
+//updation 
+
+ let number = 12;
+     number = "reassigning";    // let re-assigning here;
+ 
+ var string = "string";
+ var string = 12;       // here var variable "string"  re-declare 
+     string = "now 12 change to string data types";    // re-assinging value.
+
+const array  = ["suman",12]   //const cannot re-declare , re-assign but can updation
+   array.push('thapa');
+  console.log(array);
+
+
+// WHY LET,CONST ARE BLOCK-SCOPED AND VAR ARE FUNCTION SCOPED: CHECK DOWN BELOW
+
+function scope(){
+
+   if(true === true ){
+      var  varVar = 12;
+      let letLet = "isString";
+      const constConst = true; 
+   }
+   console.log(varVar);      // VAR CAN ACCESS FUNCTION SCOPED, INSIDE FUNCTION
+    console.log(constConst);  //REFERNCE ERROR: CANNOT ACCESS LET IS BLOCK-SCOPED
+   console.log(letLet);
+};
+
+scope();
+
+//NOTE: VAR IS FUNCTION SCOPED SO IT CAN BE ACESSED FROM ANYWHERE INSIDE FUNCTION
+
+//NOTE: LET AND CONST CANNOT ACCESS ANYWHERE FROM FUNCTION IF LET AND CONST ARE 
+//NESTED INSIDE CURLY BRACES SEPRATELY INSIDE FUNCTION LIKE ABOVE.
+
+
+
+// SO MOSTLY LET AND CONST IS USED INSIDE IF() STATEMENT AND LOOPS -> BLOCK SCOPED
+
+if(true){
+   let value = "let is block scoped";
+   console.log(value);
+};
+
+// IN LOOP:
+
+for(let i = 10 ; i<14; ++i){
+   console.log("i am block scoped");
+}
+
+
+
+/*NOTE: "var" is global/function scoped and can be re-declare 
+        "let" and "const" bocked-scoped can be access from anywhere within block{} */
+        {
+         var x = 12;
+         console.log(x);          // 12
+         var x = "string"   
+         console.log(x)           // output : string  "var is global scope"
+         let y = true; 
+         console.log(y);          // true  
+         const z = undefined;
+         console.log(z);          //undefined
+         {
+          console.log(z);           //undefined
+          console.log(x);           //string "var   x  is global"
+          let y = "i am a string";
+          console.log(y);           // "i am a string"    let is block scoped
+          var x = false;
+          console.log(x);           //false
+         }
+      }
+      
+      
+      //  NESTED - BLOCK SCOPED   "LET" & "CONST"
+      
+         if(true){
+      
+            let y = 100;
+            const z = "string value const";
+            {
+               {
+               y = "reassinging let valuE"
+               console.log(z);              //output:  "string value const"           
+               console.log(y);              //     "reassinging let valuE"
+              };
+                console.log(y);            //    "reassinging let valuE"
+                console.log(z);
+            };                             //  "string value const";
+         };
+      
+      
+      //   Here :   let value = true;   is global scoped
+      
+      
+         let value = true;  
+        console.log(value);   // true
+      
+         if(value){
+            let value = "now value is";
+            console.log(value);           // now value is
+         };
+         console.log(value);    // true
+      
+      
+      // Here code is correct because "let"  inside { }  block scope
+          var sameVariable = " global";
+         {
+          let sameVariable = "blocked scope now";
+          console.log(sameVariable);
+         }
+      
+      
+      // Here even "var" is inside { } block scope "var" is global so let and var have same
+        // variable name "letGlobal" so cannot print havins same "identifer"
+      /*
+         let letGlobal = " chance of error" ;   
+      
+         {
+            var letGlobal = "cannot print";
+            console.log(letGlobal);
+         };*/
+      
+      
+      //  function-scope: "var"
+      
+         function scoping(){
+      
+               var x = 100;
+               let y = "inside function ";
+               const z = "block scope const inside function";
+               console.log(y);
+               console.log(z);
+               console.log(x);
+      
+            if(true){
+               var  nowIsGlobal = "1000";
+               let y = "inside function if statement";
+               const z = "block scope const inside function";
+               console.log(y);
+               console.log(z);
+               console.log(x);
+            };
+          };
+      
+          scoping();
+      
+      // "let" and "const"  is only block scoped
+      
+          let arrow = () =>{
+            var x = "boolean";
+            if(true){
+               let y = "javascript is great";
+               const z = "react is great";
+               console.log(x);
+               console.log(y,z);
+               console.log(z);
+            };
+      
+            console.log(y,z);   //cannot access "let" and "const" here
+          };
+      
+          arrow();
+
+ 
 
 // primitive imuutable
 
