@@ -341,3 +341,54 @@ let new_func2 = function (){
 };
 
 console.log(new_func == new_func2);  //false
+
+
+function checkScope(){
+   let x = "function scope";
+   if(1 && 1){
+
+      console.log(x);     //'funxtion scope'
+   }
+};
+checkScope();
+
+// "let is a block scoped not a function scope"
+
+function closure(){
+    let x = "closure function"
+   return function(){
+       console.log(x)
+   }
+};
+
+let resultOfClosure = closure();
+resultOfClosure();
+
+//
+
+function outer(){
+
+   console.log(x);         //ERROR: X IS NOT DEFINED AT parent(OUTER) SCOPE
+
+   return function (){
+      let x = "i am a inner function"
+   }
+
+};
+
+let outerResult = outer();
+outerResult();
+
+
+//
+
+function show(){
+    let x = "i am parent function";
+   return function hide(){
+    console.log(x);
+   };
+   hide()
+};
+
+let parent  = show();
+parent();
